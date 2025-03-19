@@ -1,0 +1,15 @@
+# Ignore environment variables file
+.env
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment
+meterocloud_venv/
+
+# Ignore other common Python virtual environment folders
+venv/
+env/

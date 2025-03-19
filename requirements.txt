@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+httpx
+requests
+python-dotenv
+pytest
+alembic
+asyncpg
+redis
+aioredis
+gunicorn
