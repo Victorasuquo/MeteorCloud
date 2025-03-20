@@ -11,3 +11,5 @@ asyncpg
 redis
 aioredis
 gunicorn
+pymongo
+logging

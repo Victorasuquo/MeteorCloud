@@ -62,3 +62,14 @@ if __name__ == "__main__":
     print("\nWeather Information:")
     for key, value in weather_data.items():
         print(f"{key}: {value}")
+from pymongo import MongoClient
+import os
+from pathlib import Path
+from typing import Optional
+
+# Get the project root directory
+ROOT_DIR = Path(__file__).parent.parent.parent
+import sys
+sys.path.append(str(ROOT_DIR))
+
+from backend.app.config import config
