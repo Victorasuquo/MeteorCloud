@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 class WeatherService:
     BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
-    API_KEY = ""  # Move to config
+    API_KEY = "15a3c2be59942b8ad27a56231a0eb9a7"  # Move to config
 
     @staticmethod
     def get_weather(lat: float, lon: float, units: str = "metric", lang: str = "en") -> Optional[Dict]:

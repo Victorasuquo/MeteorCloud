@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeteorCloud - Your Weather Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section with Animated Background -->
+    <div class="hero">
+        <nav class="navbar glass-effect">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h1>MeteorCloud</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
+                    <a href="#features"><i class="fas fa-chart-line"></i> Features</a>
+                    <a href="#history"><i class="fas fa-history"></i> History</a>
+                    <a href="#" id="loginBtn" class="login-btn glass-effect">
+                        <i class="fas fa-user"></i> Login
+                    </a>
+                </div>
+                <button class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <main class="container">
+            <!-- Search Section with Animation -->
+            <div class="search-section glass-effect">
+                <h2 class="section-title">Discover Your Weather</h2>
+                <p class="section-subtitle">Get real-time weather updates for any city worldwide</p>
+                
+                <div class="search-box glass-effect">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="cityInput" placeholder="Enter city name..." 
+                           class="glass-input">
+                    <button id="searchBtn" class="pulse-button">
+                        <i class="fas fa-location-arrow"></i> Search
+                    </button>
+                </div>
+                
+                <div class="unit-toggle glass-effect">
+                    <button class="active" data-unit="metric">°C</button>
+                    <button data-unit="imperial">°F</button>
+                </div>
+            </div>
+
+            <!-- Weather Display with Enhanced UI -->
+            <div class="weather-card glass-effect" id="weatherCard">
+                <div class="weather-info">
+                    <div class="location-info">
+                        <div class="location-main">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h2 class="city">Loading...</h2>
+                            <span class="country"></span>
+                        </div>
+                        <div class="weather-timestamp">
+                            <i class="far fa-clock"></i>
+                            <span id="timestamp">Updated just now</span>
+                        </div>
+                    </div>
+                    
+                    <div class="temperature">
+                        <div class="temp-main glass-effect">
+                            <span class="temp">--°C</span>
+                            <span class="description">--</span>
+                        </div>
+                        <div class="temp-icon pulse">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                    </div>
+
+                    <div class="details">
+                        <div class="detail glass-effect">
+                            <i class="fas fa-temperature-high"></i>
+                            <div class="detail-info">
+                                <span class="label">Feels like</span>
+                                <span class="feels-like">--°C</span>
+                            </div>
+                        </div>
+                        <div class="detail glass-effect">
+                            <i class="fas fa-tint"></i>
+                            <div class="detail-info">
+                                <span class="label">Humidity</span>
+                                <span class="humidity">--%</span>
+                            </div>
+                        </div>
+                        <div class="detail glass-effect">
+                            <i class="fas fa-wind"></i>
+                            <div class="detail-info">
+                                <span class="label">Wind Speed</span>
+                                <span class="wind-speed">-- m/s</span>
+                            </div>
+                        </div>
+                        <div class="detail glass-effect">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <div class="detail-info">
+                                <span class="label">Pressure</span>
+                                <span class="pressure">-- hPa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <section id="features" class="features-section">
+                <h2 class="section-title">Why Choose MeteorCloud?</h2>
+                <div class="features-grid">
+                    <div class="feature-card glass-effect">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Real-Time Updates</h3>
+                        <p>Get instant weather information for any location worldwide</p>
+                    </div>
+                    <div class="feature-card glass-effect">
+                        <i class="fas fa-history"></i>
+                        <h3>Historical Data</h3>
+                        <p>Track weather patterns and view historical weather data</p>
+                    </div>
+                    <div class="feature-card glass-effect">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Responsive Design</h3>
+                        <p>Access weather updates on any device, anywhere</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Weather History -->
+            <section id="history" class="history-section">
+                <h2 class="section-title">Weather History</h2>
+                <div class="history-cards" id="historyCards"></div>
+            </section>
+        </main>
+
+        <!-- Loading Animation -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="weather-loader">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-cloud"></i>
+                <i class="fas fa-cloud-rain"></i>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message glass-effect" id="errorMessage">
+            <i class="fas fa-exclamation-circle"></i>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content glass-effect">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-circle"></i> Login</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">
+                        <i class="fas fa-user"></i> Username
+                    </label>
+                    <input type="text" id="username" class="glass-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <input type="password" id="password" class="glass-input" required>
+                </div>
+                <button type="submit" class="pulse-button">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>
